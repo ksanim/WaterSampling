@@ -1,6 +1,6 @@
 <launch>
   <!-- Launch conductivity sensor node -->
-  <node name="conductivity_sensor_node" pkg="sampler" type="conductivity_sensor_node.py" clear_params="true" output="screen" respawn="False">
+  <node name="conductivity_sensor_node" pkg="sampler" type="conductivity_sensor_node.py" clear_params="true" output="screen" respawn="false">
   <param name="source_directory" value="$(find sampler)" />
   </node>
 </launch>

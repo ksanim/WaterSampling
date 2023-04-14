@@ -1,0 +1,6 @@
+<launch>
+  <!-- Launch Extended Kalman Filter node -->
+  <node name="EKF_node" pkg="sampler" type="EKF_sonar_GPS.py" clear_params="true" output="screen" respawn="false">
+    <param name="source_directory" value="$(find sampler)" />
+  </node>
+</launch>

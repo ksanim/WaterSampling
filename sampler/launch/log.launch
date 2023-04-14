@@ -1,30 +1,49 @@
 <launch>
   <!-- Start recording the flight log data -->
   <node pkg="rosbag" type="record" name="flight_log_bagfile" output="screen"
-      args="record -o $(find sampler)/flight_logs/watersampling
+      args="record -o $(find sampler)/flight_logs/Aurelia_mission
 
 /rosout
 /rosout_agg
 
 /mavros/battery
-/mavros/distance_sensor/hrlv_ez4_pub
 /mavros/global_position/global
 /mavros/global_position/home
 /mavros/global_position/local
 /mavros/global_position/raw/satellites
+/mavros/global_position/gp_origin
+/mavros/global_position/set_gp_origin
 /mavros/home_position/home
 /mavros/imu/data
 /mavros/local_position/pose
+/mavros/local_position/odom
 /mavros/rc/in
 /mavros/state
+/mavros/setpoint_raw/local
+/mavros/setpoint_position/local
+/joy
+/mavros/distance_sensor/hrlv_ez4_pub
+/mavros/altitude
 
+/vrpn_client_node/watersampling/pose
+
+/watersampling/sonar_dist
+/watersampling/EKF_info
 /watersampling/depth_sensor
 /watersampling/conductivity_sensor
 /watersampling/sampler_pump_info
-/watersampling/sonar_dist
+/watersampling/setpoint
+/watersampling/rtc_time
+
 /sensor/ref
 /sensor/fluor
 /sensor/temp
+/sensor/humidity
+/sensor/error
+/sensor/scat
+/sensor/settings
+/sensor/calibration
+
 
 
 "

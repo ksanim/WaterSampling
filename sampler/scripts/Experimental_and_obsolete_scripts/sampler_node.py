@@ -6,7 +6,7 @@ from statistics import mean, median
 
 from pump_driver import Pump
 
-from std_msgs.msg import Int32
+from std_msgs.msg import Float32
 from mavros_msgs.msg import RCIn
 from watersampling_msgs.msg import MS5837Stamped, PumpInfo
 
@@ -58,7 +58,7 @@ class SamplerNode():
         self.depth_sensor_sub = rp.Subscriber(
             '/watersampling/depth_sensor', MS5837Stamped, self.depthSensorCallback, queue_size=1)
         self.fluor_sensor_sub = rp.Subscriber(
-            '/sensor/fluor', Int32, self.fluorSensorCallback, queue_size=1)
+            '/sensor/fluor', Float32, self.fluorSensorCallback, queue_size=1)
 
         # ROS Publisher
         self.pump_info_pub = rp.Publisher(

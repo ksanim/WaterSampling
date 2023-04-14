@@ -3,8 +3,10 @@
     <include file="$(find sampler)/launch/conductivity_sensor.launch"/>
     <include file="$(find sampler)/launch/depth_sensor.launch"/> 
     <include file="$(find sampler)/launch/pump_sampler.launch"/> 
-    <!-- include file="$(find sampler)/launch/log.launch"/ --> 
-    <!-- include file="$(find sampler)/launch/arduino_com.launch"/ --> 
+    <include file="$(find sampler)/launch/log.launch"/> 
+    <include file="$(find sampler)/launch/arduino_com.launch"/> 
     <include file="$(find sampler)/launch/sonar_sensor.launch"/>
+    <!-- include file="$(find f550_testbed)/launch/vrpn.launch"/ -->
+    <include file="$(find sampler)/launch/EKF.launch"/>
     
 </launch>

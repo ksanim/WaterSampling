@@ -1,6 +1,6 @@
 <launch>
   <!-- Launch water sampler node -->
-  <node name="water_sampler_node" pkg="sampler" type="sampler_node.py" clear_params="true" output="screen" respawn="False">
+  <node name="water_sampler_node" pkg="sampler" type="event_based_sampler_node.py" clear_params="true" output="screen" respawn="false">
   <param name="source_directory" value="$(find sampler)" />
   </node>
 </launch>

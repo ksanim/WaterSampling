@@ -35,7 +35,7 @@ plugin_blacklist:
 - companion_process_status
 - onboard_computer_status
 - debug_value
-- distance sensor
+#- distance sensor
 - esc_status
 - fake_gps
 #- gps_status
@@ -47,7 +47,7 @@ plugin_blacklist:
 - odom
 - play_tune
 - px4flow
-- rangefinder
+#- rangefinder
 - trajectory
 - wheel_odometry
 - vibration

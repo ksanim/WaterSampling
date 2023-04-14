@@ -1,6 +1,6 @@
 <launch>
   <!-- Launch sonar sensor node -->
-  <node name="sonar" pkg="sampler" type="sonar_sensor_node.py" clear_params="true" output="screen" respawn="True">
+  <node name="sonar" pkg="sampler" type="sonar_sensor_node.py" clear_params="true" output="screen" respawn="false">
     <param name="source_directory" value="$(find sampler)" />
   </node>
 </launch>

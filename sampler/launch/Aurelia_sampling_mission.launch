@@ -1,0 +1,26 @@
+<!-- Usage of the launch file: roslaunch sampler mission_F550.launch file:=mission_file.plan  -->
+
+<launch>
+    
+    <!-- Declare the mission file as an argument -->
+	<arg name="file" default="None"/>
+	
+    <!-- Start joy_node -->
+    <!-- node pkg="joy" type="joy_node" name="joy_node"/ -->
+
+    <include file="$(find sampler)/launch/waypoint_sender_sampling.launch">
+    	<!-- Takes in the "file" as an argument and passes the value to the waypoint sender "mission_file" argument -->
+	<arg name="mission_file" value="$(arg file)"/>
+    </include>
+    
+    <include file="$(find sampler)/launch/RTC.launch"/>
+    <include file="$(find sampler)/launch/EKF.launch"/>
+    <include file="$(find sampler)/launch/px4.launch"/>
+    <include file="$(find sampler)/launch/arduino_com.launch"/>
+    <include file="$(find sampler)/launch/conductivity_sensor.launch"/>
+    <include file="$(find sampler)/launch/depth_sensor.launch"/> 
+    <include file="$(find sampler)/launch/pump_sampler.launch"/>
+    <include file="$(find sampler)/launch/sonar_sensor.launch"/>
+    <include file="$(find sampler)/launch/log.launch"/>
+
+</launch>

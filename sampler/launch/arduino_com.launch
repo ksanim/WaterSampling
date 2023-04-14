@@ -1,5 +1,5 @@
 <launch>
   <!-- Launch water sampler node -->
-  <node name="rosserial" pkg="rosserial_python" type="serial_node.py" args="/dev/ttyACM0" clear_params="true" output="screen" respawn="True">
+  <node name="rosserial" pkg="rosserial_python" type="serial_node.py" args="/dev/ttyACM0" clear_params="true" output="screen" respawn="false">
   </node>
 </launch>

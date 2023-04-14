@@ -1,0 +1,6 @@
+<launch>
+  <!-- Launch RTC node -->
+  <node name="rtc_node" pkg="sampler" type="RTC_node.py" clear_params="true" output="screen" respawn="false">
+    <param name="source_directory" value="$(find sampler)" />
+  </node>
+</launch>

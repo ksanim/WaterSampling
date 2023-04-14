@@ -1,0 +1,14 @@
+Drone_sensor	KEYWORD1
+init	KEYWORD2
+start	KEYWORD2
+shutdown	KEYWORD2
+laser	KEYWORD2
+shutter	KEYWORD2
+getData	KEYWORD2
+setGain	KEYWORD2
+calibrateADC	KEYWORD2
+initADC		KEYWORD2
+initLaserTimer		KEYWORD2
+initSampleTimer		KEYWORD2
+initGPIOTE		KEYWORD2
+initPPI		KEYWORD2

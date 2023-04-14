@@ -7,6 +7,7 @@ project(watersampling_msgs)
 find_package(catkin REQUIRED COMPONENTS
   message_generation
   std_msgs
+  geometry_msgs
 )
 
 ################################################
@@ -19,12 +20,17 @@ add_message_files(DIRECTORY msg
   MS5837Stamped.msg
   ConductivityStamped.msg
   PumpInfo.msg
+  EKFInfo.msg
+  SonarStamped.msg
+  Setpoint.msg
+  RTC_time.msg
 )
 
 ## Generate added messages and services with any dependencies listed here
 generate_messages(
   DEPENDENCIES
   std_msgs
+  geometry_msgs
 )
 
 ###################################

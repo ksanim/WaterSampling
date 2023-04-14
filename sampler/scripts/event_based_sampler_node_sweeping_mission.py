@@ -62,7 +62,7 @@ class SamplerNode():
         self.enable_sampler_B = False
         self.enable_sampler_A = False
 
-# Parameters        
+# PARAMETERS        
         self.inlet_depth = 0.0
         self.sampling_depth = 0.2
         self.fluor_median = 0
@@ -149,14 +149,14 @@ class SamplerNode():
                 self.counter = self.counter+1
                 rp.loginfo("The lines have been flushed")
 # Flushing routine ends--------------------------------------------------------
-            
+
             if self.inlet_depth >= self.sampling_depth or self.enable_sampler_C == True:   #self.enable_sampler_C is the RC switch
                 self.master_pump.start()
                 
                 #%% Check if there is water running in the circuit------------------------------
                 
                 if self.main_channel.is_full == True:
-                    self.mode_sendor(self.fluor_mode_record)        # publishes mode = 1 to the /sensor/mode topic to start getting fluorescence measurements
+                    self.mode_sendor(self.fluor_mode_record)        # publishes mode = 1 to the /sensor/mode topic to start getting fluorescence measurements         
                 
                 #%% Calculate median of fluorescence window-------------------------------------
                 if(len(self.fluorescence_readings) > 0):
@@ -166,68 +166,12 @@ class SamplerNode():
                 
                 if(self.sampling_flag == 0 and self.fluor_median > self.fluor_trigger):
                     self.sampling_flag = 1
-                    
-                #%% Sampling--------------------------------------------------------------------
-                                             
-                #Sampler A
-                if self.sampling_flag == 1 and self.sampler_A.is_full == False:
-                    self.enable_sampler_A = True                    
-                    self.sampling_pump_a.start()
-                    
-                elif self.sampling_flag == 1 and self.sampler_A.is_full == True:
-                    self.sampling_pump_a.stop()
-                    if(self.depth_flag == 1):
-                        self.sampling_flag = 2                                  # Checks if the depth sensor went out of water after sampler A is full.
-                        self.depth_flag = 0                                     # The sampling flag is incremented only when the depth sensor goes out of water.
-                            
-                
-                #Sampler B    
-                if self.sampling_flag == 2 and self.sampler_B.is_full == False:
-                    self.enable_sampler_B = True                    
-                    self.sampling_pump_b.start()
-                    
-                elif self.sampling_flag == 2 and self.sampler_B.is_full == True:
-                    self.sampling_pump_b.stop()
-                    if(self.depth_flag == 1):
-                        self.sampling_flag = 3
-                        self.depth_flag = 0
-                    
-                    
-                #Sampler C    
-                if self.sampling_flag == 3 and self.sampler_C.is_full == False:
-                    self.enable_sampler_C = True                    
-                    self.sampling_pump_c.start()
-                    
-                elif self.sampling_flag == 3 and self.sampler_C.is_full == True:
-                    self.sampling_pump_c.stop()
-                    if(self.depth_flag == 1):
-                        self.sampling_flag = 4
-                        self.depth_flag = 0
 
                 self.depth_flag = 0
             else:
                 self.depth_flag = 1
                 self.master_pump.stop()
-                self.sampling_pump_a.stop()
-                self.sampling_pump_b.stop()
-                self.sampling_pump_c.stop()
-                
-# flushing routine after mission-----------------------------------------------
-                if self.sampling_flag == 4:
-                    rp.loginfo("Starting the flushing routine")
-                    self.master_pump.start()
-                    self.sampling_pump_a.start()
-                    self.sampling_pump_b.start()
-                    self.sampling_pump_c.start()
-                    
-                    rp.sleep(10)            # Flushing duration = 10 seconds
-                    
-                    self.master_pump.stop()
-                    self.sampling_pump_a.stop()
-                    self.sampling_pump_b.stop()
-                    self.sampling_pump_c.stop()
-                    rp.loginfo("The lines have been flushed")
-# flushing routine end --------------------------------------------------------
+
         else:
             self.sampling_flag = 0
             self.main_channel.is_full = False
@@ -236,9 +180,6 @@ class SamplerNode():
             self.sampler_C.is_full = False
        
             self.master_pump.stop()
-            self.sampling_pump_a.stop()
-            self.sampling_pump_b.stop()
-            self.sampling_pump_c.stop()
             self.mode_sendor(self.fluor_mode_stop)                    # publishes mode = 0 to the /sensor/mode topic to stop getting fluorescence measurements 
 
     def pumpInfoPublisher(self,):
